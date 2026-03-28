@@ -32,7 +32,7 @@ class LSTM:
             input_gate=sigmoid(conc @ self.W_i.T  + self.b_i)
             output_gate=sigmoid(conc @ self.W_o.T  + self.b_o)
             candidate=conc @ self.W_c.T + self.b_c
-            c_new=forget_gate*h_cur + input_gate*candidate
+            c_new=forget_gate*c_cur + input_gate*candidate
             h_new=output_gate*np.tanh(c_new)
             y_t=h_new @ self.W_y.T + self.b_y
             Y[:,i,:]=y_t
